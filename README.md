@@ -123,7 +123,7 @@
 <details>
 <summary><h3>🔸 마이 페이지 - 김나영</h3></summary>
 <div markdown="1">
-<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/7f3bf3a4-3740-439b-ba6d-2dc4f4234b33">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/39a299c8-d124-41d6-8c5d-9bbc78d19c07">
 <img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/ae368a47-4828-47e7-b706-7de3b59d0ccb">
 <img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/168b97c4-82c9-4277-aaef-4fe33261d110">
 <img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/e1a10435-b3f7-447a-9aac-8ff5108d7e0b">
