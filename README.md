@@ -24,7 +24,7 @@
 |박혜선|장바구니,구매하기,포인트관리 |
 |김나영|이벤트,마이페이지 |
 |이승준 |공지사항|
-|조정임|클래스(전체,공예,쿠킹,디자인,운동,뷰티,기타),수강후기,좋아요,별점|
+|조정임|클래스(전체,공예,쿠킹,디자인,운동,뷰티,기타),수강후기,좋아요,별점,main 페이지,Header UI,Footer UI|
 |한이랑|장소대여(전체,촬영 스튜디오,댄스공간, 체육시설, 공연장, 그외), 수강후기, 좋아요, 별점|
 |김일한|스토어(전체,지갑,향수,휴대폰케이스,그외), 수강후기, 좋아요, 별점|
 
@@ -42,14 +42,25 @@
 <br><br>
 
 ## 🌠 Hobby Store 클래스 기능 보기
-### 🔸회원 페이지 `김소희`
-<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
-<img width="639" alt="image" src="https://user-images.githubusercontent.com/63274664/234859951-0ad0bf76-91ab-4d7a-a399-03c5f3c9f380.png">
-<img width="702" alt="image" src="https://user-images.githubusercontent.com/63274664/234860013-0125504e-13e3-4e1b-909b-b333bbd7ecd2.png">
 
-### 🔸채팅 페이지 `김소희`
-<img width="638" alt="image" src="https://user-images.githubusercontent.com/63274664/234860142-edf09d92-5bf9-4891-b6d8-82cd267b1e66.png">
-<img width="636" alt="image" src="https://user-images.githubusercontent.com/63274664/234860215-f5846e31-1daf-48c9-a34f-08ea733b0817.png">
+<details>
+<summary><h3>🔸 회원페이지 `김소희`</h3></summary>
+<div markdown="1">
+<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
+<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
+<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
+<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
+</div>
+</details>
+<details>
+<summary><h3>🔸 채팅페이지 `김소희`</h3></summary>
+<div markdown="1">
+<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
+<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
+</div>
+</details>
+
+
 <br><br>
 
 ##  📒 KPT 회고 (Keep, Problem, Try)
