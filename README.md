@@ -44,19 +44,43 @@
 ## 🌠 Hobby Store 클래스 기능 보기
 
 <details>
-<summary><h3>🔸 회원페이지 `김소희`</h3></summary>
+<summary><h3>🔸 회원페이지 - 김소희</h3></summary>
 <div markdown="1">
-<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
-<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
-<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
-<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/4f2be1ad-3810-4019-803e-4fd63d787a24">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/8efa8962-f592-40b3-9ee4-76e5980a199e">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/472e79e2-e722-400b-991b-8271f8851535">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/0284e82b-7d41-4079-a6c5-2ea58351ed7f">
 </div>
 </details>
 <details>
-<summary><h3>🔸 채팅페이지 `김소희`</h3></summary>
+<summary><h3>🔸 채팅페이지 - 김소희</h3></summary>
 <div markdown="1">
-<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
-<img width="713" alt="image" src="https://user-images.githubusercontent.com/63274664/234859885-c816fa96-bd1f-4517-a757-7c08c3e9c839.png">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/e95700b9-2b94-490e-a57b-c5a97bd67524">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/2b3fe71f-cc7f-4e9a-8501-0c1ecdefc1a6">
+</div>
+</details>
+<details>
+<summary><h3>🔸 메인 페이지 - 조정임</h3></summary>
+<div markdown="1">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/2105fada-c7ee-4563-8867-12f1e77b6c95">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/c4677a64-9256-48cd-815e-93a5a6e7614b">
+</div>
+</details>
+<details>
+<summary><h3>🔸 공방 클래스 페이지 - 조정임</h3></summary>
+<div markdown="1">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/c7e4e622-b5fb-4530-809f-f082b1098c5f">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/85d51f18-5d65-4a16-aa93-64729028beab">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/dd38fd21-181e-4dab-8b42-750547023dcf">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/e7a5fad7-6e0c-4bbb-86be-29e5fcfcdba0">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/fdb9f06b-658a-4d87-9950-18828bddb5c7">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/4e1bf994-d48d-4248-90a8-8847d6d01127">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/e67158ba-66f7-42fd-acf7-5aa1133462c3">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/1ed5507b-7a12-4ed9-bb79-c04695811602">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/4e3e169c-6347-4d9c-b9ee-7c5b6755de6c">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/1f8ab272-dd0a-4a77-983c-3e3188d96f2a">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/3abaead6-cc20-4d68-822e-3c044c195eb5">
+<img width="713" alt="image" src="https://github.com/cjoungi/hobby_store/assets/113075984/83bc1385-b3a3-42ae-94c0-5febf356d721">
 </div>
 </details>
 
