@@ -1,4 +1,4 @@
-![image](https://github.com/cjoungi/hobby_store/assets/113075984/3e63eee4-cf5b-4d52-aaf2-f07a7beef53d)# 🥕Hobby Store :: 취미상점
+# 🥕Hobby Store :: 취미상점
 <img width="712" alt="image" src="https://user-images.githubusercontent.com/63274664/234850495-e63e84be-b1f2-421a-94d0-2a059e91cb93.png">  
 <br><br>
 
