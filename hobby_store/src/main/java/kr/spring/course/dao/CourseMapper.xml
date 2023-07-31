@@ -9,13 +9,12 @@
 	<sql id="courseCate">
 		<if test="cate!=null and cate!=''">
 			<if test="cate_num!=0"> <!-- 전체가 아닐 때 -->
-				<if test="cate_num lte 6">
-				AND cate_nums LIKE #{cate_num} || '%'
-			</if>
-			 	<if test="cate_num gte 7">
-				AND cate_nums LIKE '%' || #{cate_num}
-			</if>
-			
+				<if test="cate_num lte 6"> <!-- <= -->
+				AND TO_NUMBER(SUBSTR(cate_nums,1,1))=#{cate_num}
+				</if>
+			 	<if test="cate_num gte 7"> <!-- >= -->
+				AND TO_NUMBER(SUBSTR(cate_nums,3))=#{cate_num}
+				</if>
 			</if>
 		</if>
 	</sql>
@@ -48,7 +47,7 @@
 	<sql id="courseSearch">
 		<if test="keyword!=null and keyword!=''">
 				<if test="keyfield==1">
-					AND course_name LIKE '%' || #{keyword} || '%' OR course_content LIKE '%' || #{keyword} || '%' OR mem_nickname LIKE '%' || #{keyword} || '%'
+					AND (course_name LIKE '%' || #{keyword} || '%' OR course_content LIKE '%' || #{keyword} || '%' OR mem_nickname LIKE '%' || #{keyword} || '%')
 				</if>
 				<if test="keyfield==2">
 					AND course_name LIKE '%' || #{keyword} || '%'
@@ -261,7 +260,7 @@
 	
 	
 	<select id="selectCourseAddress" parameterType="map" resultType="courseVO">
-		SELECT mem_store,
+		SELECT DISTINCT mem_store,
 			CASE WHEN course_address1 LIKE '%(%' THEN SUBSTR(course_address1,1,INSTR(course_address1,'(')-1) 
 	            ELSE course_address1
 	        END AS course_address1 

@@ -32,7 +32,7 @@ public class PointsController {
 				 (MemberVO)session.getAttribute("user");
 		
 		int pointsCount = pointsService.getPointsCount(user.getMem_num());
-		int points = pointsService.getPoints(user.getMem_num());
+		Integer points = pointsService.getPoints(user.getMem_num());
 		
 		logger.debug("<<pointsCount>> : " + pointsCount);
 			

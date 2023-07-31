@@ -9,15 +9,7 @@
 	$(function(){
 		$('#search_form').on('submit',function(){
 			if($('#search_bar').val().trim()==''){
-				Swal.fire({
-                    icon: 'warning',
-                    title:'검색어를 입력하세요!',
-                    showCancelButton: false,
-                    confirmButtonText: "확인",
-                    confirmButtonColor: "#FF4E02"
-                })
-				$('#search_bar').val('').focus();
-				return false;
+				$('#search_bar').val('');
 			}
 		});
 	});
@@ -28,7 +20,7 @@
 		<ul>
 			<li class="my-town"><a href="/course/courseMap.do"><i class="fa-solid fa-person-shelter"></i> 우리 동네 공방 찾기</a></li>
 			<li>
-				<a class="cate <c:if test="${param.cate=='전체'}">active active-color0</c:if>">전체</a>
+				<a class="cate <c:if test="${param.cate=='전체'||param.cate==NULL||param.cate==''}">active active-color0</c:if>">전체</a>
 			</li>
 			
 			<c:forEach begin="0" end="5" var="parent">
@@ -72,12 +64,12 @@
 			<!-- 원데이/정기와 지역은 온라인 선택시 사라짐 -->
 			<span id="total">총 ${count}개</span>
 			<select class="form-select select" id="onoff" name="onoff">
-				<option value="" hidden="hidden">온라인/오프라인</option>
+				<option value="">온라인/오프라인</option>
 				<option value="2" <c:if test="${param.onoff == 2}">selected</c:if>>온라인</option>
 				<option value="1" <c:if test="${param.onoff == 1||!empty param.oneweek||!empty param.location}">selected</c:if>>오프라인</option>
 			</select>
 			<select class="form-select select" id="oneweek" name="oneweek" <c:if test="${param.onoff==2}">hidden="hidden"</c:if>>
-				<option value="" hidden="hidden">원데이/정기</option>
+				<option value="">원데이/정기</option>
 				<option value="1" <c:if test="${param.oneweek == 1}">selected</c:if>>원데이</option>
 				<option value="2" <c:if test="${param.oneweek == 2}">selected</c:if>>정기</option>
 			</select>

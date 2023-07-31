@@ -4,16 +4,18 @@ $(function(){
 	let cate = $('#sidebar .cate');
 	let d_cate = $('#sidebar .d_cate a');
 	
-	//카테고리 대분류 클릭시 세부카테고리 드롭다운
 	cate.on('click',function(){  
 		let item = $(this);//대분류
 		
-		if($('input[name=onoff]:checked').val()==1){//오프라인
-			location.href='courseList.do?cate='+item.text();
-		}else{//온라인
-			location.href='courseList.do?cate='+item.text();
+		if($('#oneweek').val()!=''||$('#location').val()!='전체'){
+			location.href='courseList.do?cate='+item.text()+'&onoff='+$('#onoff').val()+'&oneweek='+$('#oneweek').val()+
+										'&location='+$('#location').val()+'&order='+$('#order').val();
+		}else {
+			location.href='courseList.do?cate='+item.text()+'&onoff='+$('#onoff').val()+'&order='+$('#order').val();
 		}
 	});
+	
+	//카테고리 대분류 클릭시 세부카테고리 드롭다운
 	cate.each(function(){
 		if($(this).hasClass('active')){
 			$(this).parent().find('.d_cate').stop().slideDown();
@@ -24,10 +26,11 @@ $(function(){
 	d_cate.on('click',function(){
 		let item = $(this);//대분류
 		
-		if($('input[name=onoff]:checked').val()==1){//오프라인
-			location.href='courseList.do?cate='+item.text();
-		}else{//온라인
-			location.href='courseList.do?cate='+item.text();
+		if($('#oneweek').val()!=''||$('#location').val()!='전체'){
+			location.href='courseList.do?cate='+item.text()+'&onoff='+$('#onoff').val()+'&oneweek='+$('#oneweek').val()+
+										'&location='+$('#location').val()+'&order='+$('#order').val();
+		}else {
+			location.href='courseList.do?cate='+item.text()+'&onoff='+$('#onoff').val()+'&order='+$('#order').val();
 		}
 	});
 	d_cate.each(function(){
@@ -47,7 +50,7 @@ $(function(){
 	$('#select #oneweek').on('change',function(){
 		location.href='courseList.do?cate='+$('#sidebar').data('param')+
 									'&keyfield='+$('.form-select').val()+'&keyword='+$('#search_bar').val()+
-									'&location='+$('#location').val()+'&oneweek='+$(this).val()+'&order='+$('#order').val();
+									'&location='+$('#location').val()+'&onoff='+$('#onoff').val()+'&oneweek='+$(this).val()+'&order='+$('#order').val();
 	});
 	
 	//지역 선택
@@ -59,7 +62,7 @@ $(function(){
 	
 	//최신순 선택
 	$('#select #order').on('change',function(){
-		if($('input[name=onoff]:checked').val()==1){//오프라인
+		if($('select[name=onoff]').val()==1){//오프라인
 			location.href='courseList.do?onoff='+$('#onoff').val()+'&oneweek='+$('#oneweek').val()+
 									'&cate='+$('#sidebar').data('param')+'&location='+$('#location').val()+'&order='+$(this).val()+
 									'&keyfield='+$('.form-select').val()+'&keyword='+$('#search_bar').val();

@@ -148,9 +148,7 @@ input::-webkit-search-results-decoration{
 #content .card-body{
 	color:#404040;
 }
-#content span{
-	font-size:10pt;
-}
+
 /*hover 이미지 확대*/
 .card-img-top{
 	height:200px;

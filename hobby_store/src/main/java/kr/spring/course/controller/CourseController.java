@@ -1,6 +1,5 @@
 package kr.spring.course.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,14 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.code.geocoder.Geocoder;
-import com.google.code.geocoder.GeocoderRequestBuilder;
-import com.google.code.geocoder.model.GeocodeResponse;
-import com.google.code.geocoder.model.GeocoderRequest;
-import com.google.code.geocoder.model.GeocoderResult;
-import com.google.code.geocoder.model.GeocoderStatus;
-import com.google.code.geocoder.model.LatLng;
-
 import kr.spring.course.service.CourseService;
 import kr.spring.course.vo.CourseFavVO;
 import kr.spring.course.vo.CourseReplyFavVO;
@@ -50,8 +41,6 @@ import kr.spring.util.PagingUtil;
 public class CourseController {
 	private static final Logger logger = LoggerFactory.getLogger(CourseController.class);
 
-	//private int rowCount=12; 
-	
 	@Autowired
 	private CourseService courseService;
 	@Autowired
@@ -64,7 +53,7 @@ public class CourseController {
 	public CourseVO initCommand() {
 		return new CourseVO();
 	}
-
+	
 	
 	//=============글쓰기==============//
 	//등록 폼 호출
@@ -141,11 +130,12 @@ public class CourseController {
 	@RequestMapping("/course/courseList.do")
 	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 								@RequestParam(value="order",defaultValue="1") String order,
-								String cate,
-								@RequestParam(value="onoff",defaultValue="0") String onoff,
-								@RequestParam(value="oneweek",defaultValue="0") String oneweek,
+								@RequestParam(value="cate",defaultValue="전체") String cate,
+								@RequestParam(value="onoff",defaultValue="") String onoff,
+								@RequestParam(value="oneweek",defaultValue="") String oneweek,
 								@RequestParam(value="location",defaultValue="전체") String location,
-								String keyfield,String keyword,HttpSession session) {
+								@RequestParam(value="keyfield",defaultValue="1")String keyfield,
+								String keyword,HttpSession session) {
 		
 		//카테고리 고유번호 저장
 		int cate_num;
@@ -154,7 +144,7 @@ public class CourseController {
 		}else {
 			cate_num = courseService.selectCate_num(cate);
 		}
-		
+
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);

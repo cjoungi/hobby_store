@@ -5,61 +5,74 @@
 <!-- 메인 시작 -->
 	<div class="course-img clear-flex">
 		<div class="img1">
-			<img src="${pageContext.request.contextPath}/image_bundle/공예.jpeg">
-			<a href="/course/courseList.do?cate=공예"><span style="left:150px;">공예 <i class="fa-solid fa-chevron-right"></i></span></a>
+			<a href="/course/courseList.do?cate=공예">
+				<img src="${pageContext.request.contextPath}/image_bundle/공예.jpeg">
+				<span>공예 <i class="fa-solid fa-chevron-right"></i></span>
+			</a>
 		</div>
 		<div class="img2">
-			<img src="${pageContext.request.contextPath}/image_bundle/쿠킹.jpeg">
-			<a href="/course/courseList.do?cate=쿠킹"><span style="left:550px;">쿠킹 <i class="fa-solid fa-chevron-right"></i></span></a>
+			<a href="/course/courseList.do?cate=쿠킹">
+				<img src="${pageContext.request.contextPath}/image_bundle/쿠킹.jpeg">
+				<span>쿠킹 <i class="fa-solid fa-chevron-right"></i></span>
+			</a>
 		</div>
 		<div class="img3">
-			<img src="${pageContext.request.contextPath}/image_bundle/드로잉.jpeg">
-			<a href="/course/courseList.do?cate=드로잉"><span style="left:950px;">드로잉 <i class="fa-solid fa-chevron-right"></i></span></a>
+			<a href="/course/courseList.do?cate=드로잉">
+				<img src="${pageContext.request.contextPath}/image_bundle/드로잉.jpeg">
+				<span>드로잉 <i class="fa-solid fa-chevron-right"></i></span>
+			</a>
 		</div>
 		<div class="img4">
-			<img src="${pageContext.request.contextPath}/image_bundle/운동.jpeg">
-			<a href="/course/courseList.do?cate=운동"><span style="left:1350px;">운동 <i class="fa-solid fa-chevron-right"></i></span></a>
+			<a href="/course/courseList.do?cate=운동">
+				<img src="${pageContext.request.contextPath}/image_bundle/운동.jpeg">
+				<span>운동 <i class="fa-solid fa-chevron-right"></i></span>
+			</a>
 		</div>
 		<div class="img5">
-			<img src="${pageContext.request.contextPath}/image_bundle/뷰티.jpeg">
-			<a href="/course/courseList.do?cate=뷰티"><span style="left:1750px;">뷰티 <i class="fa-solid fa-chevron-right"></i></span></a>
+			<a href="/course/courseList.do?cate=뷰티">
+				<img src="${pageContext.request.contextPath}/image_bundle/뷰티.jpeg">
+				<span>뷰티 <i class="fa-solid fa-chevron-right"></i></span>
+			</a>
 		</div>
 	</div>
 	
 	<div style="width:80%;margin:0 auto;">
 		<div class="course-search">
 			<div class="search-bar1">
-				<input type="search" name="keyword" id="search_bar" value="${param.keyword}" placeholder="주변에 다양한 클래스를 찾아보세요!" autocomplete="off">
-				<button type="submit" class="search-btn" id="search_icon1"><i class="fa-solid fa-magnifying-glass"></i></button>
+				<form action="/course/courseList.do" method="post" id="search_form">
+					<input type="search" name="keyword" id="search_bar" placeholder="주변에 다양한 클래스를 찾아보세요!" autocomplete="off">
+					<button type="submit" class="search-btn" id="search_icon1"><i class="fa-solid fa-magnifying-glass"></i></button>
+				</form>
 			</div>
 			<div class="cate">
 				<select class="form-select select" id="location" name="location">
 						<option hidden="hidden">지역</option>
-						<option value="1" <c:if test="${param.location == 1}">selected</c:if>>전체</option>
-						<option value="2" <c:if test="${param.location == 2}">selected</c:if>>서울</option>
-						<option value="3" <c:if test="${param.location == 3}">selected</c:if>>경기</option>
-						<option value="4" <c:if test="${param.location == 4}">selected</c:if>>인천</option>
-						<option value="5" <c:if test="${param.location == 5}">selected</c:if>>강원</option>
-						<option value="6" <c:if test="${param.location == 6}">selected</c:if>>충북</option>
-						<option value="7" <c:if test="${param.location == 7}">selected</c:if>>세종</option>
-						<option value="8" <c:if test="${param.location == 8}">selected</c:if>>충남</option>
-						<option value="9" <c:if test="${param.location == 9}">selected</c:if>>대전</option>
-						<option value="10" <c:if test="${param.location == 10}">selected</c:if>>경북</option>
-						<option value="11" <c:if test="${param.location == 11}">selected</c:if>>대구</option>
-						<option value="12" <c:if test="${param.location == 12}">selected</c:if>>울산</option>
-						<option value="13" <c:if test="${param.location == 13}">selected</c:if>>부산</option>
-						<option value="14" <c:if test="${param.location == 14}">selected</c:if>>경남</option>
-						<option value="15" <c:if test="${param.location == 15}">selected</c:if>>전북</option>
-						<option value="16" <c:if test="${param.location == 16}">selected</c:if>>전남</option>
-						<option value="17" <c:if test="${param.location == 17}">selected</c:if>>광주</option>
-						<option value="18" <c:if test="${param.location == 18}">selected</c:if>>제주</option>
+						<option value="전체">전체</option>
+						<option value="서울">서울</option>
+						<option value="경기">경기</option>
+						<option value="인천">인천</option>
+						<option value="강원">강원</option>
+						<option value="충북">충북</option>
+						<option value="세종">세종</option>
+						<option value="충남">충남</option>
+						<option value="대전">대전</option>
+						<option value="경북">경북</option>
+						<option value="대구">대구</option>
+						<option value="울산">울산</option>
+						<option value="부산">부산</option>
+						<option value="경남">경남</option>
+						<option value="전북">전북</option>
+						<option value="전남">전남</option>
+						<option value="광주">광주</option>
+						<option value="제주">제주</option>
 				</select>
 				<select class="form-select select" id="cate" name="cate">
-						<option value="1" <c:if test="${param.location == 1}">selected</c:if>>공예</option>
-						<option value="2" <c:if test="${param.location == 2}">selected</c:if>>쿠킹</option>
-						<option value="3" <c:if test="${param.location == 3}">selected</c:if>>드로잉</option>
-						<option value="4" <c:if test="${param.location == 4}">selected</c:if>>운동</option>
-						<option value="5" <c:if test="${param.location == 5}">selected</c:if>>뷰티</option>
+						<option hidden="hidden">카테고리</option>
+						<option value="공예">공예</option>
+						<option value="쿠킹">쿠킹</option>
+						<option value="드로잉">드로잉</option>
+						<option value="운동">운동</option>
+						<option value="뷰티">뷰티</option>
 				</select>
 			</div>
 		</div>

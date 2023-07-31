@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
 #main_body{
 	width:100%;
 	margin-top:110px;
@@ -16,21 +18,32 @@
 
 .course-img img{
 	position:absolute;
-	top:0;
+	top:0px;
 	width: calc(100% / 5);
 	height:100%;
+	opacity: 0.7;
 }
 .course-img span{
 	position: absolute;
-	top:-50px;
+	top:300px;
+	width: calc(100% / 5);
+	text-align:center;
+	font-family: 'Do Hyeon', sans-serif;
 	font-size: 30pt;
 	font-weight: bold;
-	color:#FFF;
-	text-shadow:2px 2px 2px gray;;
+	color:#fff;
+	z-index: 990;
+	text-shadow:#999999 2px 2px 5px;
 }
-.course-img span:hover{
+.course-img a:hover > span{
 	color:#FF4E02;
 	cursor: pointer;
+}
+.img2:hover >a>span, .img4:hover >a>span{
+	text-shadow:#404040 2px 2px 5px;
+}
+.course-img a:hover > img{
+	opacity: 1;
 }
 .clear-flex::after{
 	content:"";
@@ -49,26 +62,26 @@
 .img5{
 	left:800px;
 }
-.course-img span{
-	top:400px;
-	left:100px;
-	z-index:990;
-}
+
 
 .course-search{
+	height:100px;
 	margin:70px auto;
 }
-
 .search-bar1{
 	position:relative;
-	width:50%;
+	width:600px;
+	height:50px;
 	min-width:400px;
 	margin:0 auto;
 	margin-bottom:50px;
 }
+#search_form{
+	width:600px;
+	margin:0 auto;
+}
 .search-bar1 #search_bar{
 	width:600px;
-	margin:50px 0 50px 100px;
 	background-color: #FFF;
 	border:1px solid lightgray;
 	border-radius:5px;
@@ -80,7 +93,10 @@
 	transition:.2s;
 	background-color: #FFF;
 }
-.search-bar1 #search_icon{
+.search-bar1 #search_icon1{
+	position: absolute;
+    top: 10px;
+    right: 10px;
 	background: none;
 	border:none;
 }
@@ -90,11 +106,7 @@ input::-webkit-search-results-button,
 input::-webkit-search-results-decoration{
     display:none;
 }
-#search_icon1 i{
-	position: absolute;
-	top:58px;
-	right:120px;
-}
+
 #search_bar{
 	border:none;
 }

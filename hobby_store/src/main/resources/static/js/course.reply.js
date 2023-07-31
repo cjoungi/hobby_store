@@ -959,18 +959,17 @@ $(function(){
 	
 	
 	//----------------------스크롤 시 소개,후기바/kakao map 고정----------------------//
+	//소개,후기 바의 y축 위치
 	let origin = $('.scroll').offset().top;
 	$(window).scroll(function(){
 		//현재위치
 		let cur = $(document).scrollTop();
-		//특정 엘리먼트의 위치값
-		let loc = $('.scroll').offset().top;
 		//왼쪽 소개 bottom 위치값
 		let bottom = $('.left-intro').offset().top+$('.left-intro').outerHeight();
 
-		//소개,후기 바 고정x
+		//소개,후기 바 고정 x
 		if(!$('.scroll').hasClass("fixed")){
-			if(cur > loc - 170){
+			if(cur > origin - 170){
 				$('.scroll').addClass("fixed");
 				$('.c-content').css('margin-top','340px');
 				
@@ -978,7 +977,7 @@ $(function(){
 				$('.right-map').addClass("fixedMap");
 			}
 			
-		//소개,후기 바 고정ㅇ
+		//소개,후기 바 고정 o
 		}else{
 			if(cur < origin - 170){
 				$('.scroll').removeClass("fixed");
@@ -987,7 +986,20 @@ $(function(){
 				//kakao map 고정 해제
 				$('.right-map').removeClass("fixedMap");
 			}
+			
+			//스크롤시, 소개박스 아래에 밑줄 스타일
+			if(cur < bottom - (170+80)){ //헤더의 높이 + 소개,후기바 높이
+				$('.rev').css('border-bottom','none');
+				$('.intro').css('border-bottom','5px solid #FF4E02');
+			}
+			
+			//스크롤시, 후기박스 아래에 밑줄 스타일
+			if(cur > $('.reply').offset().top - (170+80+150)){ //헤더의 높이 + 소개,후기바 높이 + 후기 margin-top
+				$('.intro').css('border-bottom','none');
+				$('.rev').css('border-bottom','5px solid #FF4E02');
+			}
 
+			//지도 고정/해제
 			if(cur > bottom-850){
 				$('.right-map').removeClass("fixedMap");
 				$('#map').css('margin-top',$('.left-intro').height()-600);
@@ -996,21 +1008,6 @@ $(function(){
 				$('#map').css('margin-top','0');
 			}
 		}
-		
-		/*
-		let map =  $('#map').offset().top;
-		//kakao map 고정
-		if(!$('#map').hasClass("fixedMap")){
-			if(cur > map - 290){
-				alert(0);
-				
-			}
-		}else{
-			if(cur < map - 210){
-				$('#map').removeClass("fixedMap");
-			}
-		}
-		*/
 				
 	});
 	
@@ -1020,10 +1017,14 @@ $(function(){
 	//소개
 	$('.intro').on('click',function(){
 		window.scrollTo({ top: 900, behavior: "smooth" });
+		$('.rev').css('border-bottom','none');
+		$(this).css('border-bottom','5px solid #FF4E02');
 	});
 	//후기
 	$('.rev').on('click',function(){
 		window.scrollTo({ top: 3800, behavior: "smooth" });
+		$('.intro').css('border-bottom','none');
+		$(this).css('border-bottom','5px solid #FF4E02');
 	});
 	
 	
