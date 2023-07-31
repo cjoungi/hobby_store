@@ -187,8 +187,9 @@ input::-webkit-search-results-decoration{
 #content .fa-star{
 	color:rgba(250, 208, 0, 0.99);
 }
-#content .card-text{
-	margin-top:10px;
+#content .card-footer{
+	background-color: #fff;
+	text-align: right;
 }
 
 #content .list-page{

@@ -117,29 +117,26 @@
 			<c:forEach var="course" items="${list}">
 			<div class="col">
 				<div class="card h-100" style="position:relative;">
-				
 					<c:forEach var="fav" items="${favCheck}">
 				 	<span class="red-heart" data-num="${course.course_num}"><i class="fa-regular fa-heart" <c:if test="${fav.fmem_num==user.mem_num&&fav.course_num==course.course_num}">
 				 		style="font-weight:bold;"</c:if>></i></span>
 				 	</c:forEach>
 				 	
-					<a href="courseDetail.do?course_num=${course.course_num}" style="display:block;">
-						<div class="card-img-top">
-						  <img src="/course/imageView.do?course_num=${course.course_num}&item_type=1" width="100%" height="100%">
-						</div>
-						<div class="card-body">
-						  	<div class="color-gray">
-						  		<span>${course.mem_store}</span>
-						  		<span class="card-hit"><i class="fa-solid fa-eye"></i> ${course.course_hit} <i class="fa-solid fa-heart"></i> <span class="countFav">${course.fav}</span></span>
-						  	</div>
-						  	<h5 class="card-title"><b>${course.course_name}</b></h5>
-						  	<span>${course.replycount}개의 후기 · <i class="fa-regular fa-star"></i> ${course.staravg}<c:if test="${empty course.staravg}">0.0</c:if></span>
-						  	<p class="card-text">
-						  		<span>${course.course_address1}</span>
-						  		<br><b><fmt:formatNumber>${course.course_price}</fmt:formatNumber>원</b><span style="color:gray;"> / 1인</span>
-						  	</p>
-						</div>
-					</a>
+					<div class="card-img-top" onclick="location.href='courseDetail.do?course_num=${course.course_num}'">
+					  <img src="/course/imageView.do?course_num=${course.course_num}&item_type=1" width="100%" height="100%">
+					</div>
+					<div class="card-body" onclick="location.href='courseDetail.do?course_num=${course.course_num}'">
+					  	<div class="color-gray">
+					  		<span>${course.mem_store}</span>
+					  		<span class="card-hit"><i class="fa-solid fa-eye"></i> ${course.course_hit} <i class="fa-solid fa-heart"></i> <span class="countFav">${course.fav}</span></span>
+					  	</div>
+					  	<h5 class="card-title"><b>${course.course_name}</b></h5>
+					  	<span style="font-size:9pt">${course.course_address1}</span><br>
+					  	<span>${course.replycount}개의 후기 · <i class="fa-regular fa-star"></i> ${course.staravg}<c:if test="${empty course.staravg}">0.0</c:if></span>
+					</div>
+					<div class="card-footer" onclick="location.href='courseDetail.do?course_num=${course.course_num}'">
+					  	<b><fmt:formatNumber>${course.course_price}</fmt:formatNumber>원</b>
+					</div>
 				</div>
 			</div>
 			</c:forEach>

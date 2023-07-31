@@ -1,5 +1,6 @@
 package kr.spring.main.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,27 +31,28 @@ public class MainController {
 	
 	@RequestMapping("/main/main.do")
 	public String main(Model model) {
+		List<List<CourseVO>> listOfLists = new ArrayList<>();
 		
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("start", 1);
-		map.put("end", 4);
-		List<CourseVO> list = courseService.selectCourseMainList(map);
-		
+		Map<String,Object> map1 = new HashMap<String,Object>();
+		map1.put("start", 1);
+		map1.put("end", 4);
+		List<CourseVO> list1 = courseService.selectCourseMainList(map1);
+		listOfLists.add(list1);
 		
 		Map<String,Object> map2 = new HashMap<String,Object>();
 		map2.put("start", 1);
 		map2.put("end", 4);
 		List<CourseVO> list2 = courseService.selectCourseMainList2(map2);
+		listOfLists.add(list2);
 		
 		Map<String,Object> map3 = new HashMap<String,Object>();
 		map3.put("start", 1);
 		map3.put("end", 4);
 		List<CourseVO> list3 = courseService.selectCourseMainList3(map3);
+		listOfLists.add(list3);
 		
-		model.addAttribute("list",list);
-		model.addAttribute("list2",list2);
-		model.addAttribute("list3",list3);
-
+		model.addAttribute("listOfLists",listOfLists);
+		
 		return "main";//타일스 설정값
 	}
 }

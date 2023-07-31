@@ -18,14 +18,16 @@ import kr.spring.course.vo.CourseVO;
 @Mapper
 public interface CourseMapper {
 	//메인페이지 클래스 목록
-	@Select("SELECT * FROM(SELECT a.*,rownum rnum FROM (SELECT * FROM course ORDER BY course_num DESC)a) WHERE rnum>=#{start} AND rnum<=#{end}")
-	public List<CourseVO> selectCourseMainList(Map<String,Object> map);
 	@Select("SELECT * FROM(SELECT a.*,rownum rnum FROM (SELECT * FROM course "
 			+ "LEFT JOIN (SELECT course_num,COUNT(fav_num) AS fav "
 			+ "FROM course_fav GROUP BY course_num) USING(course_num)"
-			+ "ORDER BY fav DESC NULLS LAST)a) WHERE rnum>=#{start} AND rnum<=#{end}")
+			+ "ORDER BY fav DESC NULLS LAST)a) JOIN member_detail USING(mem_num) WHERE rnum>=#{start} AND rnum<=#{end}")
+	public List<CourseVO> selectCourseMainList(Map<String,Object> map1);
+	@Select("SELECT * FROM(SELECT a.*,rownum rnum FROM (SELECT * FROM course ORDER BY course_num DESC)a) "
+			+ "JOIN member_detail USING(mem_num) WHERE rnum>=#{start} AND rnum<=#{end}")
 	public List<CourseVO> selectCourseMainList2(Map<String,Object> map2);
-	@Select("SELECT * FROM(SELECT a.*,rownum rnum FROM (SELECT * FROM course WHERE course_price <= 10000 ORDER BY course_num DESC)a) WHERE rnum>=#{start} AND rnum<=#{end}")
+	@Select("SELECT * FROM(SELECT a.*,rownum rnum FROM (SELECT * FROM course WHERE course_price <= 10000 ORDER BY course_num DESC)a) "
+			+ "JOIN member_detail USING(mem_num) WHERE rnum>=#{start} AND rnum<=#{end}")
 	public List<CourseVO> selectCourseMainList3(Map<String,Object> map3);
 	
 	//부모글

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/main.js"></script>
 <!-- 메인 시작 -->
@@ -77,108 +78,40 @@
 			</div>
 		</div>
 		<!-- 클래스 목록 가져오기 -->
-		<div class="course-list">
-			<h1>실시간 <span style="color:#FF4E02;font-weight:bold;font-size:40pt;">BEST</span> 클래스</h1>
-			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-				<c:forEach var="course" items="${list2}">
-				<div class="col">
-					<div class="card h-100" style="position:relative;">
-					
-						<c:forEach var="fav" items="${favCheck}">
-					 	<span class="red-heart" data-num="${course.course_num}"><i class="fa-regular fa-heart" <c:if test="${fav.fmem_num==user.mem_num&&fav.course_num==course.course_num}">
-					 		style="font-weight:bold;"</c:if>></i></span>
-					 	</c:forEach>
-					 	
-						<a href="courseDetail.do?course_num=${course.course_num}" style="display:block;">
-							<div class="card-img-top">
+		<c:set var="arr" value="${fn:split('실시간 BEST 클래스,신규 클래스,만원의 행복',',')}"/>
+		<c:forEach begin="1" end="3" step="1" varStatus="status">
+			<div class="course-list">
+				<h1>${arr[status.index-1]}</h1>
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+					<c:forEach var="course" items="${listOfLists[status.index-1]}">
+					<div class="col">
+						<div class="card h-100" style="position:relative;">
+							<c:forEach var="fav" items="${favCheck}">
+						 	<span class="red-heart" data-num="${course.course_num}"><i class="fa-regular fa-heart" <c:if test="${fav.fmem_num==user.mem_num&&fav.course_num==course.course_num}">
+						 		style="font-weight:bold;"</c:if>></i></span>
+						 	</c:forEach>
+						 	
+							<div class="card-img-top" onclick="location.href='courseDetail.do?course_num=${course.course_num}'">
 							  <img src="/course/imageView.do?course_num=${course.course_num}&item_type=1" width="100%" height="100%">
 							</div>
-							<div class="card-body">
+							<div class="card-body" onclick="location.href='courseDetail.do?course_num=${course.course_num}'">
 							  	<div class="color-gray">
-							  		<span>${course.mem_nickname}</span>
+							  		<span>${course.mem_store}</span>
 							  		<span class="card-hit"><i class="fa-solid fa-eye"></i> ${course.course_hit} <i class="fa-solid fa-heart"></i> <span class="countFav">${course.fav}</span></span>
 							  	</div>
 							  	<h5 class="card-title"><b>${course.course_name}</b></h5>
-							  	<span><i class="fa-regular fa-star"></i> ${course.staravg} (후기 ${course.replycount})</span>
-							  	<p class="card-text">
-							  		<span>${course.course_address1}</span>
-							  		<br><b><fmt:formatNumber>${course.course_price}</fmt:formatNumber>원</b><span style="color:gray;"> / 1인</span>
-							  	</p>
+							  	<span style="font-size:9pt">${course.course_address1}</span><br>
+							  	<span>${course.replycount}개의 후기 · <i class="fa-regular fa-star"></i> ${course.staravg}<c:if test="${empty course.staravg}">0.0</c:if></span>
 							</div>
-						</a>
+							<div class="card-footer" onclick="location.href='courseDetail.do?course_num=${course.course_num}'">
+							  	<b><fmt:formatNumber>${course.course_price}</fmt:formatNumber>원</b>
+							</div>
+						</div>
 					</div>
+					</c:forEach>
 				</div>
-				</c:forEach>
 			</div>
-		</div>
-		<div class="course-list">
-			<h1>신규 클래스</h1>
-			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-				<c:forEach var="course" items="${list}">
-				<div class="col">
-					<div class="card h-100" style="position:relative;">
-					
-						<c:forEach var="fav" items="${favCheck}">
-					 	<span class="red-heart" data-num="${course.course_num}"><i class="fa-regular fa-heart" <c:if test="${fav.fmem_num==user.mem_num&&fav.course_num==course.course_num}">
-					 		style="font-weight:bold;"</c:if>></i></span>
-					 	</c:forEach>
-					 	
-						<a href="courseDetail.do?course_num=${course.course_num}" style="display:block;">
-							<div class="card-img-top">
-							  <img src="/course/imageView.do?course_num=${course.course_num}&item_type=1" width="100%" height="100%">
-							</div>
-							<div class="card-body">
-							  	<div class="color-gray">
-							  		<span>${course.mem_nickname}</span>
-							  		<span class="card-hit"><i class="fa-solid fa-eye"></i> ${course.course_hit} <i class="fa-solid fa-heart"></i> <span class="countFav">${course.fav}</span></span>
-							  	</div>
-							  	<h5 class="card-title"><b>${course.course_name}</b></h5>
-							  	<span><i class="fa-regular fa-star"></i> ${course.staravg} (후기 ${course.replycount})</span>
-							  	<p class="card-text">
-							  		<span>${course.course_address1}</span>
-							  		<br><b><fmt:formatNumber>${course.course_price}</fmt:formatNumber>원</b><span style="color:gray;"> / 1인</span>
-							  	</p>
-							</div>
-						</a>
-					</div>
-				</div>
-				</c:forEach>
-			</div>
-		</div>
-		<div class="course-list">
-			<h1>만원의 행복</h1>
-			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-				<c:forEach var="course" items="${list3}">
-				<div class="col">
-					<div class="card h-100" style="position:relative;">
-					
-						<c:forEach var="fav" items="${favCheck}">
-					 	<span class="red-heart" data-num="${course.course_num}"><i class="fa-regular fa-heart" <c:if test="${fav.fmem_num==user.mem_num&&fav.course_num==course.course_num}">
-					 		style="font-weight:bold;"</c:if>></i></span>
-					 	</c:forEach>
-					 	
-						<a href="courseDetail.do?course_num=${course.course_num}" style="display:block;">
-							<div class="card-img-top">
-							  <img src="/course/imageView.do?course_num=${course.course_num}&item_type=1" width="100%" height="100%">
-							</div>
-							<div class="card-body">
-							  	<div class="color-gray">
-							  		<span>${course.mem_nickname}</span>
-							  		<span class="card-hit"><i class="fa-solid fa-eye"></i> ${course.course_hit} <i class="fa-solid fa-heart"></i> <span class="countFav">${course.fav}</span></span>
-							  	</div>
-							  	<h5 class="card-title"><b>${course.course_name}</b></h5>
-							  	<span><i class="fa-regular fa-star"></i> ${course.staravg} (후기 ${course.replycount})</span>
-							  	<p class="card-text">
-							  		<span>${course.course_address1}</span>
-							  		<br><b><fmt:formatNumber>${course.course_price}</fmt:formatNumber>원</b><span style="color:gray;"> / 1인</span>
-							  	</p>
-							</div>
-						</a>
-					</div>
-				</div>
-				</c:forEach>
-			</div>
-		</div>
+		</c:forEach>
 	</div>
 	
 	<div style="width:100%;">
