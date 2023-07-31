@@ -55,8 +55,9 @@
 }
 #sidebar .d_cate{
 	line-height:3em;
-	padding:10px 0 20px 10px;
-	margin:0;
+	margin:10px 10px;
+	padding-left:20px;
+	border-left:3px solid #e2e2e2;
 	display:none;
 }
 #sidebar .d_cate li:hover, #sidebar .active-color{
