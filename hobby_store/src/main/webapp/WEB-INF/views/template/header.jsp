@@ -15,12 +15,6 @@
 		    </button>
 			<!-- 토글버튼 끝 -->
 			<a id="navbar_brand" class="navbar-brand" href="/main/main.do"><b>취미상점</b></a>
-			<!-- 통합검색창 시작 -->
-			<form id="search" class="navbar-expand">
-				<input class="search-bar" type="search" placeholder="통합검색어를 입력하세요">
-				<button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-			</form>
-			<!-- 통합검색창 끝 -->
 			<!-- 로그인/회원가입 버튼 시작 -->
 			<div id="navbar_btn">
 				<c:if test="${empty user}">
