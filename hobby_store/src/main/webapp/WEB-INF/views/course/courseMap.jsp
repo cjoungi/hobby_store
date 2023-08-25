@@ -105,9 +105,9 @@
 	    imageSize = new kakao.maps.Size(30, 40), // 마커이미지의 크기입니다
 	    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
-	    //현재주소의 마커
+	    // 현재 주소의 마커
 	    var add_marker= [];
-	    //현재위치의 마커
+	    // 현재위치의 마커
 	    var here_marker = [];
 		// 마커를 담을 배열입니다
 	    var markers = [];
@@ -118,7 +118,7 @@
 		// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 		var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 	    
-		//현재 주소의 LatLng 저장
+		// 현재 주소의 LatLng 저장
 		var add_LatLng = '';
 	    
 		// 장소 검색 객체를 생성합니다
@@ -160,7 +160,6 @@
 		// 키워드 검색을 요청하는 함수입니다
 		function searchPlaces(sido,gugun,keyword,title) {
 			
-			
 		   	//주소와 공방이름 가져오기
 		   	var arr = getAddress(sido,gugun.substring(0,3),keyword);
 		   	
@@ -170,22 +169,18 @@
 			   	loc_data.splice(0, loc_data.length);
 			   	
 			   	$(arr).each(function(index,item){
-
 			   		var kw = item.course_address1 + " " + item.mem_store;
-			   		
 				    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
 				    ps.keywordSearch(kw,placesSearchCB); 
 			   	});
 			
 			//DB에 검색 결과가 없을 경우
 		   	}else{
-
 			   		var address = sido + " " + gugun;
 			   		
 			   		geocoder.addressSearch(address, function(result, status) {
 		    		    // 정상적으로 검색이 완료됐으면 
 		    		     if (status === kakao.maps.services.Status.OK) {
-		    		    	 
 		    		    	// 지도 중심을 이동
 	    		        	var moveLatLon = new kakao.maps.LatLng(result[0].y, result[0].x);
 	    		            map.panTo(moveLatLon);	
@@ -207,8 +202,6 @@
 		   	}
 		}
 
-		
-		
 		
 		
 		var loc_data = [];
@@ -426,17 +419,6 @@
 		
         
 		
-		
-		
-		
-		
-		
-	    
-		
-		
-		
-		
-		
 		function delMarker(){
 			
 			//현재위치 마커 삭제
@@ -495,10 +477,6 @@
 		});
 		 
 		 
-		
-		
-		
-		
 		
 		 
 		 //====================현재 위치로 이동하기==================//
@@ -585,9 +563,6 @@
         	// getCurrentPosition()는 함수를 호출할 때마다 현재 위치를 알려준다.
             navigator.geolocation.getCurrentPosition(success);
 		});
-		
-		
-		
 		
 		
 		

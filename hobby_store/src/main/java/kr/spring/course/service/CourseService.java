@@ -2,6 +2,7 @@ package kr.spring.course.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Update;
@@ -14,9 +15,9 @@ import kr.spring.course.vo.CourseVO;
 
 public interface CourseService { 
 	//부모글
-	public List<CourseVO> selectCourseMainList(Map<String,Object> map);
-	public List<CourseVO> selectCourseMainList2(Map<String,Object> map2);
-	public List<CourseVO> selectCourseMainList3(Map<String,Object> map3);
+	public CompletableFuture<List<CourseVO>> selectCourseMainList(Map<String,Object> map);
+	public CompletableFuture<List<CourseVO>> selectCourseMainList2(Map<String,Object> map);
+	public CompletableFuture<List<CourseVO>> selectCourseMainList3(Map<String,Object> map);
 	//클래스 목록
 	public List<CourseVO> selectCourseList(Map<String,Object> map);
 	//지도에 검색할 주소 가져오기
@@ -69,7 +70,6 @@ public interface CourseService {
 	public void deleteReplyPhoto3(Integer reply_num);
 	
 	//후기 좋아요
-	public CourseReplyFavVO selectReplyFavCheck();
 	public CourseReplyFavVO selectReplyFav(CourseReplyFavVO fav);
 	public int selectReplyFavCount(Integer reply_num);
 	public void insertReplyFav(CourseReplyFavVO fav);

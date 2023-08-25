@@ -133,8 +133,6 @@ public interface CourseMapper {
 	public void deleteReplyPhoto3(Integer reply_num);
 	
 	//후기 좋아요
-	@Select("SELECT * FROM course_reply_fav WHERE fmem_num=#{mem_num} AND reply_num=#{mem_num}")
-	public CourseReplyFavVO selectReplyFavCheck();
 	@Select("SELECT * FROM course_reply_fav WHERE reply_num=#{reply_num} AND fmem_num=#{fmem_num}")
 	public CourseReplyFavVO selectReplyFav(CourseReplyFavVO fav);
 	@Select("SELECT COUNT(*) FROM course_reply_fav WHERE reply_num=#{reply_num}")

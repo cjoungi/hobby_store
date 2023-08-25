@@ -1,5 +1,12 @@
 package kr.spring.course.controller;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -7,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -14,6 +22,10 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -109,7 +121,7 @@ public class CourseController {
 		//상세 카테고리 번호
 		int cate_num = courseService.selectCate_num(courseVO.getCate_name());
 		
-		courseVO.setCate_nums(cate_parent+"" + "," + cate_num+"");
+		courseVO.setCate_nums(cate_parent+ "," + cate_num);
 		logger.debug("<<cate_nums>> :" + cate_parent + "," + cate_num);
 		
 		//클래스 데이터 등록
@@ -243,30 +255,67 @@ public class CourseController {
 	
 	//이미지 출력
 	@RequestMapping("/course/imageView.do")
-	public ModelAndView viewImage(@RequestParam int course_num,@RequestParam int item_type) {
+	public ResponseEntity<byte[]> viewImage(@RequestParam int course_num,@RequestParam int item_type) {
 		
 		CourseVO courseVO = courseService.selectCourse(course_num);
-		
 		logger.debug("<<이미지courseVO>> :" + courseVO);
 		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("imageView");
+		byte[] imageFileData = null;
+		String filename = null;
 		
 		if(item_type==1) {
-			mav.addObject("imageFile", courseVO.getCourse_photo1());
-			mav.addObject("filename", courseVO.getCourse_photo_name1());
+			imageFileData = courseVO.getCourse_photo1();
+			filename = courseVO.getCourse_photo_name1();
 		}else if(item_type==2) {
-			mav.addObject("imageFile", courseVO.getCourse_photo2());
-			mav.addObject("filename", courseVO.getCourse_photo_name2());
+			imageFileData = courseVO.getCourse_photo2();
+			filename = courseVO.getCourse_photo_name2();
 		}else if(item_type==3) {
-			mav.addObject("imageFile", courseVO.getCourse_photo3());
-			mav.addObject("filename", courseVO.getCourse_photo_name3());
+			imageFileData = courseVO.getCourse_photo3();
+			filename = courseVO.getCourse_photo_name3();
 		}
 		
-		return mav;
+		// 이미지 리사이징 작업
+	    byte[] resizedImage = resizeImage(imageFileData,filename);
+
+	    // 이미지 리사이징된 결과를 HTTP 응답으로 반환
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.IMAGE_JPEG);
+	    headers.setContentDispositionFormData("attachment", filename);
+
+	    // HTTP 응답을 나타내는 객체로, 응답 본문과 함께 상태 코드, 헤더 등을 포함
+	    return new ResponseEntity<>(resizedImage, headers, HttpStatus.OK);
 	}
 	
 	
+	private byte[] resizeImage(byte[] imageData,String filename) {
+	    try {
+	        BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(imageData));
+	        String originalImageExtension  = filename.substring(filename.lastIndexOf(".") + 1); // 확장자 추출
+
+	        int newWidth = 450;
+	        int newHeight = 300;
+
+	        Image resultingImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+	        BufferedImage resizedImage = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_RGB);
+	        													// 그림을 그릴 좌표 (왼쪽 상단 모서리부터)
+	        resizedImage.getGraphics().drawImage(resultingImage, 0, 0, null);
+		
+	        // 이미지 데이터를 메모리 내의 바이트 배열로 저장하기 위한 임시 저장소
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			
+			if(originalImageExtension.equals("png")) { 
+				ImageIO.write(resizedImage, "png", baos); 
+			}else { 
+				ImageIO.write(resizedImage, "jpg", baos); 
+			}
+			
+	        return baos.toByteArray();
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return null;
+	    }
+	}
 
 	
 

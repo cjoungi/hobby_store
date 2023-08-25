@@ -91,7 +91,7 @@
 						 		style="font-weight:bold;"</c:if>></i></span>
 						 	</c:forEach>
 						 	
-							<div class="card-img-top" onclick="location.href='courseDetail.do?course_num=${course.course_num}'">
+							<div class="card-img-top" onclick="location.href='${pageContext.request.contextPath}/course/courseDetail.do?course_num=${course.course_num}'">
 							  <img src="/course/imageView.do?course_num=${course.course_num}&item_type=1" width="100%" height="100%">
 							</div>
 							<div class="card-body" onclick="location.href='courseDetail.do?course_num=${course.course_num}'">

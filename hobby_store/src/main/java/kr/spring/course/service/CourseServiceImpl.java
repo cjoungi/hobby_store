@@ -4,8 +4,11 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.RejectedExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,16 +28,37 @@ public class CourseServiceImpl implements CourseService{
 	
 	//==========부모글==========//
 	@Override
-	public List<CourseVO> selectCourseMainList(Map<String, Object> map) {
-		return courseMapper.selectCourseMainList(map);
+    @Async("executor")
+    public CompletableFuture<List<CourseVO>> selectCourseMainList(Map<String, Object> map) {
+		try {
+            System.out.println(Thread.currentThread().getName());
+        } catch (RejectedExecutionException e) {
+            e.printStackTrace();
+        }
+        List<CourseVO> result = courseMapper.selectCourseMainList(map);
+        return CompletableFuture.completedFuture(result);
+    }
+	@Override
+	@Async("executor")
+	public CompletableFuture<List<CourseVO>> selectCourseMainList2(Map<String, Object> map2) {
+		try {
+            System.out.println(Thread.currentThread().getName());
+        } catch (RejectedExecutionException e) {
+            e.printStackTrace();
+        }
+		List<CourseVO> result2 = courseMapper.selectCourseMainList2(map2);
+        return CompletableFuture.completedFuture(result2);
 	}
 	@Override
-	public List<CourseVO> selectCourseMainList2(Map<String, Object> map2) {
-		return courseMapper.selectCourseMainList2(map2);
-	}
-	@Override
-	public List<CourseVO> selectCourseMainList3(Map<String, Object> map3) {
-		return courseMapper.selectCourseMainList3(map3);
+	@Async("executor")
+	public CompletableFuture<List<CourseVO>> selectCourseMainList3(Map<String, Object> map3) {
+		try {
+            System.out.println(Thread.currentThread().getName());
+        } catch (RejectedExecutionException e) {
+            e.printStackTrace();
+        }
+		List<CourseVO> result3 = courseMapper.selectCourseMainList3(map3);
+        return CompletableFuture.completedFuture(result3);
 	}
 	@Override
 	public List<CourseVO> selectCourseList(Map<String, Object> map) {
@@ -48,21 +72,23 @@ public class CourseServiceImpl implements CourseService{
 
 	//요일,시간 course_time 테이블에 입력
 	public void insertCourse_time(CourseVO course) {
-		for(CourseTimeVO vo : course.getCourseTimeVO()) {
-			if(vo.getCourse_reg_date()!=null) {
-				vo.setCourse_num(course.getCourse_num());
-				vo.setMem_num(course.getMem_num());
-				String output = "";
-				List<String> time = vo.getCourse_reg_times();
-				//공백 또는 null 제거
-				time.removeAll(Arrays.asList("",null));
-				for(int i=0;i<vo.getCourse_reg_times().size();i++) {
-					output += vo.getCourse_reg_times().get(i);
-					if(i<vo.getCourse_reg_times().size()-1) output += ",";
+		if (course.getCourseTimeVO() != null) {
+			for(CourseTimeVO vo : course.getCourseTimeVO()) {
+				if(vo.getCourse_reg_date()!=null) {
+					vo.setCourse_num(course.getCourse_num());
+					vo.setMem_num(course.getMem_num());
+					String output = "";
+					List<String> time = vo.getCourse_reg_times();
+					//공백 또는 null 제거
+					time.removeAll(Arrays.asList("",null));
+					for(int i=0;i<vo.getCourse_reg_times().size();i++) {
+						output += vo.getCourse_reg_times().get(i);
+						if(i<vo.getCourse_reg_times().size()-1) output += ",";
+					}
+					System.out.println("~~~~~~~~~~~~~~~"+output);
+					vo.setCourse_reg_time(output);
+					courseMapper.insertCourse_time(vo);
 				}
-				System.out.println("~~~~~~~~~~~~~~~"+output);
-				vo.setCourse_reg_time(output);
-				courseMapper.insertCourse_time(vo);
 			}
 		}
 	}
@@ -225,11 +251,6 @@ public class CourseServiceImpl implements CourseService{
 	@Override
 	public void deleteReplyFavByReplyNum(Integer reply_num) {
 		courseMapper.deleteReplyFavByReplyNum(reply_num);
-	}
-
-	@Override
-	public CourseReplyFavVO selectReplyFavCheck() {
-		return courseMapper.selectReplyFavCheck();
 	}
 
 	@Override

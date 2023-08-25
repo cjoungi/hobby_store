@@ -92,10 +92,6 @@
 		SELECT COUNT(*) FROM course JOIN member USING(mem_num) 
 		LEFT JOIN (SELECT course_num , COUNT(reply_num) AS replycount 
 		FROM course_reply GROUP BY course_num) USING(course_num)
-		LEFT JOIN (SELECT course_num,COUNT(fav_num) AS fav 
-		FROM course_fav GROUP BY course_num) USING(course_num)
-		LEFT JOIN (SELECT course_num , ROUND(AVG(star_auth),1) AS staravg 
-		FROM course_reply GROUP BY course_num) USING(course_num)
 		WHERE status = #{status}
 			<include refid="courseCate"></include>
 			<include refid="courseOnoff"></include>
